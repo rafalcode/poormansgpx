@@ -7,7 +7,7 @@ DBG2CFLAGS=-g -Wall -DDBG2
 TDBGCFLAGS=-g -Wall -DDBG # True debug flags!
 
 LIBS=-lgsl -lgslcblas -lm
-EXES=gpxrd
+EXES=gpxrd gl0 stragrab1
 
 # GPX reading.
 # these are rough and ready, and make no attempt to parse XML, which is what these files are
@@ -17,6 +17,14 @@ EXES=gpxrd
 # often, there is no issue for IRL or Canarias.
 # first off, simple .. no haversine.
 gpxrd: gpxrd.c
+	${CC} ${CFLAGS} -o $@ $^ -lm
+
+# from chwats, using getline
+gl0: gl0.c
+	${CC} ${CFLAGS} -o $@ $^ -lm
+stragrab1: stragrab1.c
+	${CC} ${CFLAGS} -o $@ $^ -lm
+glord2: glord2.c
 	${CC} ${CFLAGS} -o $@ $^ -lm
 
 .PHONY: clean
